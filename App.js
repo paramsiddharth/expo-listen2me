@@ -1,14 +1,11 @@
 import { StatusBar } from 'expo-status-bar';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
   StyleSheet,
-  Text,
-  View,
-  TextInput,
-  NativeSyntheticEvent,
-  TextInputSubmitEditingEventData
+  View
 } from 'react-native';
-import Loading from 'react-native-animated-ellipsis';
+import Input from './components/input';
+import Messages from './components/messages';
 
 export default function App() {
   const [reRender, setReRender] = useState(false);
@@ -27,7 +24,7 @@ export default function App() {
   ]);
 
   /**
-   * @type {React.MutableRefObject<TextInput>}
+   * // @ type {React.MutableRefObject<TextInput>}
    */
   // const input = useRef();
 
@@ -38,7 +35,7 @@ export default function App() {
   useEffect(() => {
     if (msg.length > 0) sendMessage();
   }, [reRender]);
-  
+
   const addMessage = (message, author = 0) => {
     setChats([
       ...chats,
@@ -51,8 +48,8 @@ export default function App() {
   };
 
   /**
-   * 
-   * // @ param {NativeSyntheticEvent<TextInputSubmitEditingEventData>} e 
+   *
+   * // @ param {NativeSyntheticEvent<TextInputSubmitEditingEventData>} e
    */
   const sendMessage = () => {
     // addMessage(e.nativeEvent.text);
@@ -78,7 +75,7 @@ export default function App() {
       }), 500);
     // input.current.setNativeProps({ text: '' });
     // input.current.props.text;
-    
+
     /* const id = chats.length;
     const newChat = {
       id,
@@ -99,35 +96,8 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      {
-        chats.map(c => (
-          <Text style={{
-            ...styles.message,
-            ...(c.by === 0 ? {
-              borderBottomRightRadius: 0,
-              alignSelf: 'flex-end'
-            } : {
-              borderBottomLeftRadius: 0,
-              alignSelf: 'flex-start'
-            })
-          }} key={c.id}>
-            {
-              c.text !== '...'
-              ? c.text
-              : <Loading style={{
-                  color: 'black',
-                  fontSize: 50
-                }} />
-            }
-          </Text>
-        ))
-      }
-      <TextInput
-        blurOnSubmit={false}
-        value={msg}
-        onChangeText={t => setMsg(t)}
-        style={styles.input}
-        onSubmitEditing={render} />
+      <Messages msgs={chats} />
+      <Input value={msg} onChange={setMsg} onSubmit={render} />
       <StatusBar style="auto" />
     </View>
   );
@@ -140,30 +110,5 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'baseline',
     justifyContent: 'flex-end',
-  },
-  message: {
-    fontSize: 40,
-    display: 'flex',
-    paddingTop: 10,
-    paddingBottom: 10,
-    paddingLeft: 30,
-    paddingRight: 30,
-    backgroundColor: 'lightblue',
-    margin: 5,
-    borderTopLeftRadius: 28,
-    borderTopRightRadius: 28,
-    borderBottomLeftRadius: 28,
-    borderBottomRightRadius: 28
-  },
-  input: {
-    display: 'flex',
-    alignSelf: 'stretch',
-    marginTop: 35,
-    borderColor: '#666',
-    borderStyle: 'solid',
-    borderWidth: 2,
-    padding: 20,
-    fontSize: 20,
-    borderRadius: 23
   }
 });
