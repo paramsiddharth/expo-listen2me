@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "expo-listen2me",
+    "name": "Listen To Me",
     "slug": "expo-listen2me",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -18,16 +18,23 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.paramsid.listen2me"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "package": "com.paramsid.listen2me"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "e5555710-34b3-41a0-b62c-cafacb042090"
+      }
     }
   }
 }

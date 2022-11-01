@@ -7,6 +7,7 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
+    "apk": "npx eas build -p android --profile apk",
     "postinstall": "patch-package"
   },
   "dependencies": {
@@ -21,7 +22,8 @@
     "react-native-web": "~0.18.7"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.9"
+    "@babel/core": "^7.12.9",
+    "eas-cli": "^2.6.0"
   },
   "private": true
 }
