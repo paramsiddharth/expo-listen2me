@@ -1,8 +1,6 @@
 import {
   StyleSheet,
-  Text,
-  NativeSyntheticEvent,
-  TextInputSubmitEditingEventData
+  Text
 } from 'react-native';
 import Loading from 'react-native-animated-ellipsis';
 

@@ -23,11 +23,6 @@ export default function App() {
     }
   ]);
 
-  /**
-   * // @ type {React.MutableRefObject<TextInput>}
-   */
-  // const input = useRef();
-
   const render = () => {
     setReRender(!reRender);
   };
@@ -47,12 +42,8 @@ export default function App() {
     ]);
   };
 
-  /**
-   *
-   * // @ param {NativeSyntheticEvent<TextInputSubmitEditingEventData>} e
-   */
+
   const sendMessage = () => {
-    // addMessage(e.nativeEvent.text);
     addMessage(msg);
     setMsg('');
 
@@ -73,32 +64,13 @@ export default function App() {
           }
         ];
       }), 500);
-    // input.current.setNativeProps({ text: '' });
-    // input.current.props.text;
-
-    /* const id = chats.length;
-    const newChat = {
-      id,
-      by: 1,
-      text: '...'
-    };
-
-    alert(newChat); */
-
-    /* setChats([
-      ...chats,
-      newChat
-    ]);
-    setTimeout(() => {
-      setChats(chats.map(c => c.id !== id ? c : { ...c, text: 'Hmmm...' }));
-    }, 1500); */
   };
 
   return (
     <View style={styles.container}>
       <Messages msgs={chats} />
       <Input value={msg} onChange={setMsg} onSubmit={render} />
-      <StatusBar style="auto" />
+      <StatusBar style='auto' />
     </View>
   );
 }
